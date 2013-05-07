@@ -2,7 +2,9 @@
  * Requires jQuery.
  */
 
-function AmyCarousel($items, changeOnClick, changeCallback) {
+var amy = amy || {};
+
+amy.Carousel = function($items, changeOnClick, changeCallback) {
     var thisCarousel = this;
 
     thisCarousel.$items = $items;
@@ -65,11 +67,11 @@ function AmyCarousel($items, changeOnClick, changeCallback) {
             }
         }, seconds * 500);
     };
-}
+};
 
 // Sample use:
 
-var c = new AmyCarousel($('#carousel li'), false,
+var c = new amy.Carousel($('#carousel li'), false,
     function ($newCurrentItem, $oldCurrentItem, newCurrentIndex) {
         $oldCurrentItem.fadeOut(homepage.CAROUSEL_ANIMATION_SPEED, function() {
             $newCurrentItem.fadeIn(homepage.CAROUSEL_ANIMATION_SPEED);
