@@ -15,3 +15,20 @@ amy.pixelsToInt = function(pixels) {
         return pixels;
     }
 }
+
+amy.isElementChildOf = function(potentialChild, potentialParent) {
+    if (potentialChild == potentialParent) {
+        return true;
+    }
+
+    var parent = potentialChild.parentNode;
+    if (parent == null) {
+        return false;
+    }
+    else if (parent == potentialParent) {
+        return true;
+    }
+    else {
+        return amy.isElementChildOf(parent, potentialParent);
+    }
+};
