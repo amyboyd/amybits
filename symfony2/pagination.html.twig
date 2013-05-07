@@ -1,0 +1,39 @@
+{#
+Sample usage:
+{% include '::pagination.html.twig' with {
+    'route': app.request.get('_route'),
+    'route_params': app.request.get('_route_params'),
+    'page': page,
+    'page_count': page_count} %}
+#}
+
+{% if page_count > 1 %}
+    {% set route_params = route_params | default({}) %}
+
+    <div class="pagination">
+        {% if page >= 3 %}
+            <a data-page="{{ 1 }}" href="{{ path(route, route_params + {'page': 1}) }}"
+                class="not-current">&laquo;</a>
+        {% endif %}
+
+        {% if page >= 2 %}
+            <a data-page="{{ page - 1 }}" href="{{ path(route, route_params + {'page': page - 1}) }}"
+                class="not-current" title="{{ 'Back'|trans }}">&lt;</a>
+        {% endif %}
+
+        {% for i in 1..page_count %}
+            <a data-page="{{ i }}" href="{{ path(route, route_params + {'page': i}) }}"
+                class="{{ i == page ? 'current' : 'not-current' }}">{{ i }}</a>
+        {% endfor %}
+
+        {% if page <= page_count - 1 %}
+            <a data-page="{{ page + 1 }}" href="{{ path(route, route_params + {'page': page + 1}) }}"
+                class="not-current">&gt;</a>
+        {% endif %}
+
+        {% if page <= page_count - 2 %}
+            <a data-page="{{ page_count }}" href="{{ path(route, route_params + {'page': page_count}) }}"
+                class="not-current">&raquo;</a>
+        {% endif %}
+    </div>
+{% endif %}
