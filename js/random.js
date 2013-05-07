@@ -32,3 +32,17 @@ amy.isElementChildOf = function(potentialChild, potentialParent) {
         return amy.isElementChildOf(parent, potentialParent);
     }
 };
+
+amy.arrayUniques = function(arr) {
+    arr = arr.sort(function(a, b) {
+        return a * 1 - b * 1;
+    });
+    var ret = [arr[0]];
+    // Start loop at 1 as element 0 can never be a duplicate.
+    for (var i = 1; i < arr.length; i++) {
+        if (arr[i - 1] !== arr[i]) {
+            ret.push(arr[i]);
+        }
+    }
+    return ret;
+};
