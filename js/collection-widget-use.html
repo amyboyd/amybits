@@ -1,0 +1,43 @@
+<div id="form" class="collection-widget">
+    <ol class="list">
+        <li data-index="1">
+            any html
+        </li>
+        <li data-index="2">
+            any html
+        </li>
+        <li data-index="3">
+            any html
+        </li>
+    </ol>
+
+    <script type="text/html">
+        <li data-index="$$">
+            the html for new items
+        </li>
+    </script>
+
+    <div class="add-another">Add another +</div>
+</div>
+
+<script src="collection-widget.js"></script>
+<script>
+(function() {
+    var collectionWidget = new amy.CollectionWidget($('.collection-widget')[0]);
+
+    // Add a hook to change the template HTML a little.
+    collectionWidget.preAddAnother = function(templateHTML) {
+        // This is just an example...
+        var index = templateHTML.match(/class="method-stage-number">\d/);
+        index = Number(index[0].substr(28));
+
+        templateHTML = templateHTML.replace(/class="method-stage-number">\d/,
+            'class="method-stage-number">' + (index + 1));
+
+        return templateHTML;
+    }
+
+    collectionWidget.addAnother();
+    collectionWidget.addAnother();
+})();
+</script>
