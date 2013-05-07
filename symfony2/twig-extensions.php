@@ -51,6 +51,22 @@ class Whatever extends Twig_Extension
         $percent = 100 / (1 + ($slash[0] / $slash[1]));
         return round($percent, 1);
     }
+
+    /**
+     * Given 1, returns 1st.
+     * Given 13, return 13th.
+     * And so on.
+     */
+    public function dayOfMonthWithOrdinal($day)
+    {
+        $ends = array('th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th');
+        if (($day % 100) >= 11 && ($day % 100) <= 13) {
+            return $day . 'th';
+        }
+        else {
+            return $day . $ends[$day % 10];
+        }
+    }
 }
 
 class WeekStuff extends Twig_Extension
