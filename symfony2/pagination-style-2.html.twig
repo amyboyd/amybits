@@ -1,0 +1,18 @@
+{#
+Sample usage:
+{% include '::pagination-style-2.html.twig' with {
+    'route': app.request.get('_route'),
+    'route_params': app.request.get('_route_params'),
+    'page': page,
+    'page_count': page_count} %}
+#}
+
+{% if page_count > 1 %}
+    <div class="pagination">
+        <span class="arrow back" title="{{ 'pagination.back_link_title'|trans }}" data-page="{{ page - 1 }}"
+            href="{{ path(route, route_params + {'page': page - 1}) }}">&lt;</span>
+        <span class="text">{{ 'Page %current% of %count%'|trans({'%current%': page, '%count%': page_count}) }}</span>
+        <span class="arrow next" title="{{ 'pagination.next_link_title'|trans }}" data-page="{{ page + 1 }}"
+            href="{{ path(route, route_params + {'page': page + 1}) }}">&gt;</span>
+    </div>
+{% endif %}
