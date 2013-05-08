@@ -96,4 +96,42 @@ class WeekStuff extends Twig_Extension
             . ' - '
             . date('jS M, Y', strtotime($year . 'W' . $week . '7'));
     }
+
+    /**
+     * NOT TRANSLATED! ENGLISH ONLY!
+     *
+     * @param DateTime $date
+     * @return string E.g. "just now", "5 seconds ago", "1 year ago"
+     */
+    public function ago(DateTime $date)
+    {
+        $secondsDelta = time() - $date->getTimestamp();
+        if ($secondsDelta === 0) {
+            return 'just now';
+        }
+
+        $format = $secondsDelta < 0 ? 'in %s' : '%s ago';
+
+        $tokens = array (
+            31536000 => 'year',
+            2592000 => 'month',
+            604800 => 'week',
+            86400 => 'day',
+            3600 => 'hour',
+            60 => 'minute',
+            1 => 'second',
+        );
+
+        $secondsDelta = abs($secondsDelta);
+        foreach ($tokens as $unit => $text) {
+            if ($secondsDelta < $unit) {
+                continue;
+            }
+            $numberOfUnits = floor($secondsDelta / $unit);
+            $inWords = $numberOfUnits . ' ' . $text . (($numberOfUnits > 1) ? 's' : '');
+            break;
+        }
+
+        return sprintf($format, $inWords);
+    }
 }
