@@ -13,10 +13,14 @@ alias pgmemory="sudo sysctl -w kern.sysv.shmmax=1073741824 && sudo sysctl -w ker
 
 # Git.
 alias gs="git status"
-alias gl="git log"
+alias gsh="git show"
 alias gc="git commit"
+alias gch="git checkout"
+alias gl="git log"
 alias gd="git diff"
 alias gdc="git diff --cached"
+alias gb="git branch"
 
 # Misc. other.
-alias ll="ls -l"
+alias ll="ls -op"
+alias subl="/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"
