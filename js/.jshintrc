@@ -1,18 +1,36 @@
 {
-  "camelcase": true,
   "indent": 2,
   "undef": true,
   "quotmark": "single",
-  "maxlen": 85,
   "trailing": true,
   "curly": true,
-  "globals": {"$": false, "jQuery": false},
+  "globals": {
+    "window": false,
+    "document": false,
+    "alert": false,
+    "setTimeout": false,
+    "clearTimeout": false,
+    "console": false,
+
+    "jasmine": false,
+    "jasmineStubs": false,
+    "describe": false,
+    "it": false,
+    "expect": false,
+    "toBe": false,
+    "beforeEach": false,
+    "afterEach": false,
+    "spyOn": false,
+
+    "jQuery": false,
+    "$": false
+  },
   "bitwise": true,
   "eqeqeq": true,
   "latedef": true,
   "newcap": true,
   "strict": true,
   "trailing": true,
+  "sub": true,
   "maxstatements": 10
 }
-
