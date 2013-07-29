@@ -1,0 +1,4 @@
+[
+  { "keys": ["super+f"], "command": "show_panel", "args": { "panel": "find", "in_selection": false } }
+]
+
