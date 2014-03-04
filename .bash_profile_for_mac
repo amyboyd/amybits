@@ -1,6 +1,8 @@
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+git config --global color.ui true
+
 # Go to directories.
 alias towork="cd ~/Work"
 
@@ -16,10 +18,12 @@ alias gs="git status"
 alias gsh="git show"
 alias gc="git commit"
 alias gch="git checkout"
-alias gl="git log"
+alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset'"
 alias gd="git diff"
 alias gdc="git diff --cached"
 alias gb="git branch"
+alias gwc="git whatchanged -p"
+alias copybranch="echo -n $(git rev-parse --abbrev-ref HEAD) | pbcopy"
 
 # Misc. other.
 alias ll="ls -op"
