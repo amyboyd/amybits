@@ -13,7 +13,8 @@ alias gd="git diff"
 alias gdc="git diff --cached"
 alias gb="git branch"
 alias gwc="git whatchanged -p"
-alias copybranch="echo -n $(git rev-parse --abbrev-ref HEAD) | pbcopy"
+alias thisbranch="echo -n $(git rev-parse --abbrev-ref HEAD)"
+alias copybranch="thisbranch | pbcopy"
 
 # Misc. other.
 alias ll="ls -opgh"
