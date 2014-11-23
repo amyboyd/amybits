@@ -1,3 +1,5 @@
+export PATH="./bin:$PATH"
+
 git config --global color.ui true
 
 # Go to directories.
@@ -8,8 +10,9 @@ alias gs="git status"
 alias gsh="git show"
 alias gc="git commit"
 alias gch="git checkout"
-alias gl="git log --pretty=format:'%Cred%h%Creset  %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(yellow)%d%Creset' --no-merges"
+alias gl="git log --no-merges --pretty=format:'%Cred%h%Creset  %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(yellow)%d%Creset'"
 alias gl2="git log --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+alias gl3="git log --no-merges --pretty=format:'%Cred%h%Creset  %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias gd="git diff"
 alias gdc="git diff --cached"
 alias gb="git branch"
@@ -18,20 +21,28 @@ alias gcp="git cherry-pick"
 alias gcpc="git cherry-pick --continue"
 alias gaap="git add . -p"
 alias thisbranch="git branch | awk '/^\* (.+)/ { print $1 }' | sed 's/\* //'"
-alias copybranch="git branch | awk '/^\* (.+)/ { print $1 }' | sed 's/\* //' | pbcopy"
+alias copybranch='echo -n `thisbranch` | pbcopy'
+alias thiscommit="git rev-parse HEAD"
+alias copycommit='echo -n `thiscommit` | pbcopy'
 
-# Misc. other.
+# Misc.
 alias ll="ls -opgh"
 alias open="xdg-open"
 alias flushdns="sudo kill -HUP $(pgrep dnsmasq)"
 alias composer="php composer.phar"
 alias getcomposer="curl -sS https://getcomposer.org/installer | php"
 alias igrep="grep -i"
+alias pubkeyperm='chmod 0600 $1'
 alias cawwot="for i in {1..10000}; do sleep 0.005; echo -n '    cawwot'; done;"
 
 # Change brightness (0.1 to 1.0).
-alias brightness="xrandr --output LVDS1 --brightness "
+alias brightness="xrandr --output eDP1 --brightness"
 
 # Using Mac OS X's copy/paste names.
 alias pbcopy="xclip -selection c"
 alias pbpaste="xclip -selection c -o"
+
+# Default Ubuntu aliases.
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
