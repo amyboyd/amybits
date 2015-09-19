@@ -20,6 +20,10 @@ alias gwc="git whatchanged -p"
 alias gcp="git cherry-pick"
 alias gcpc="git cherry-pick --continue"
 alias gaap="git add . -p"
+alias gpum='git pull upstream master'
+alias gputb='git pull upstream `thisbranch`'
+alias gpa='git push amy `thisbranch`'
+alias gsubup="git submodule update --init --recursive"
 alias thisbranch="git branch | awk '/^\* (.+)/ { print $1 }' | sed 's/\* //'"
 alias copybranch='echo -n `thisbranch` | pbcopy'
 alias thiscommit="git rev-parse HEAD"
@@ -34,6 +38,11 @@ alias getcomposer="curl -sS https://getcomposer.org/installer | php"
 alias igrep="grep -i"
 alias pubkeyperm='chmod 0600 $1'
 alias cawwot="for i in {1..10000}; do sleep 0.005; echo -n '    cawwot'; done;"
+alias resolvecomposerlock='rm composer.lock && composer install && git add composer.lock && git status'
+
+psg() {
+    ps ax | grep '$1' | grep -v grep
+}
 
 # Change brightness (0.1 to 1.0).
 alias brightness="xrandr --output eDP1 --brightness"
