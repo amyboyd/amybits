@@ -39,6 +39,7 @@ alias igrep="grep -i"
 alias pubkeyperm='chmod 0600 $1'
 alias cawwot="for i in {1..10000}; do sleep 0.005; echo -n '    cawwot'; done;"
 alias resolvecomposerlock='rm composer.lock && composer install && git add composer.lock && git status'
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 psg() {
     ps ax | grep '$1' | grep -v grep
